@@ -18,8 +18,8 @@ _rebuild()
 
 def statistics():
     busTimeDat = np.loadtxt('busTime.csv',delimiter=',')
-    xAxis = busTimeDat[0,0:]
-    yAxis = busTimeDat[1,0:]
+    xAxis = busTimeDat[0:, 0]
+    yAxis = busTimeDat[0:, 1]
     width = 1
     plt.axis([np.min(xAxis)*0.95,np.max(xAxis)*1.05,0,np.max(yAxis)+1]) #设置X轴和Y轴的最大最小值
     plt.bar(xAxis, yAxis, width, color =  'b')
@@ -27,8 +27,8 @@ def statistics():
     plt.ylabel('次数')
     plt.xlabel('时刻')
     for i in range(busTimeDat.shape[1]):
-        textStr = "%d,%d"%(xAxis[i],yAxis[i])
-        plt.text(xAxis[i],yAxis[i]+0.3,textStr,ha='left', va= 'top',fontsize=8, style='italic', rotation=45)
+        textStr = "%d,%d"%(xAxis[i], yAxis[i])
+        plt.text(xAxis[i], yAxis[i]+0.3, textStr, ha='left', va= 'top', fontsize=8, style='italic', rotation=45)
     plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
     plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
     plt.show()
